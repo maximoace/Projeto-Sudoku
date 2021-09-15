@@ -48,8 +48,7 @@ Por motivos de organização, sugiro que o nome da branch seja dev-seunome
 
 ### **O que é uma branch?**
 
-Branch é um galho, uma parte do código que não segue o fluxo principal, você cria uma "cópia" do ramo principal para fazer alterações.
-
+Branch é um galho, uma parte do código que não segue o fluxo principal, você cria uma "cópia" do ramo principal para fazer alterações.\
 Quando se termina de adicionar alterações se funde o galho de volta no ramo principal e o git vai solucionar as diferenças entre os arquivos.
 
 ![branches](https://www.nobledesktop.com/image/blog/git-branches-merge.png)
