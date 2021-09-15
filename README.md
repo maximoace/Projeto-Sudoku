@@ -2,7 +2,7 @@
 
 Este projeto faz parte das atividades propostas da matéria de Programação Orientada a Objetos da UNDB, 4º período de 2021.2
 
-Professor: Allan Kassio
+Professor: [allankassio](https://github.com/allankassio)
 
 Equipe:
 
@@ -29,4 +29,4 @@ As entradas e saídas são manipuladas através do terminal e o jogo deve propor
 
 ### Status
 
-<span style="color: yellow">Iniciado</span>
+Iniciado
