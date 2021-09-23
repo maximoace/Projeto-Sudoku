@@ -1,8 +1,10 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class MatrixManager {
 
@@ -30,12 +32,12 @@ public class MatrixManager {
 
     //Preenche todos os quadrantes não diagonais da matrizs
     public void fillRemaining() {
-        for (int i=0; i<this.grid.length; i=i+sqrt) {
-            for (int j=0; j<this.grid[i].length; j=j+sqrt) {
-                if (i == j) {
+        for (int row=0; row<this.grid.length; row=row+sqrt) {
+            for (int column=0; column<this.grid[row].length; column=column+sqrt) {
+                if (row == column) {
                     continue;
                 }
-                fillQuadrant(i, j);
+                fillQuadrant(row, column);
             }
         }
     }
@@ -128,25 +130,73 @@ public class MatrixManager {
     //Cria uma lista com valores de 1 a 9
     public List<Integer> getNumbers() {
         List<Integer> numbers = new ArrayList<Integer>();
-        for(int i=1; i < 10; i++)  {
+        for (int i=1; i < 10; i++)  {
             numbers.add(i);
         }
         return numbers;
     }
 
+    //Cria uma lista com os índices da grade
     public List<Integer> getIndex() {
         List<Integer> numbers = new ArrayList<Integer>();
-        for(int i=0; i < this.grid.length; i++)  {
+        for (int i=0; i < this.grid.length; i++)  {
             numbers.add(i);
         }
         return numbers;
     }
 
+    //Remove uma determinada quantidade de valores da grade
     public void removeValues(int delete_count) {
-        for(int i=0; i<delete_count; i++) {
+        while(getEmpty() < delete_count) {
             int x = this.getRandomElement(getIndex());
             int y = this.getRandomElement(getIndex());
             this.grid[x][y] = 0;
+        };
+    }
+
+    //Retorna a quantidade de casas com valor 0
+    public int getEmpty() {
+        int count = 0;
+        for (int row = 0; row < this.grid.length; row++) {
+            for (int column = 0; column < this.grid[row].length; column ++) {
+                if (grid[row][column] == 0) {
+                    count++;
+                }
+            }
         }
+        return count;
+    }
+
+    public boolean isFilled() {
+        for (int row=0; row<this.grid.length; row++) {
+            for (int column=0; column<this.grid.length; column++) {
+                if (this.grid[row][column] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean isValid() {
+        boolean result = true;
+        for (int row=0; row<this.grid.length; row++) {
+            result = hasDuplicate(getRow(grid, row));
+        }
+        for (int column=0; column<this.grid[0].length; column++) {
+            result = hasDuplicate(getColumn(grid, column));
+        }
+        for (int index=0; index<this.grid.length + this.sqrt; index+=index+this.sqrt) {
+            result = hasDuplicate(getQuadrant(grid, index, index));
+        }
+        return result;
+    }
+
+    public boolean hasDuplicate(List<Integer> list) {
+        Set<Integer> filter = new HashSet<Integer>(list);
+        if(filter.size() < list.size()){
+            return true;
+        }
+        return false;
     }
 }

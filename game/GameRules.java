@@ -9,11 +9,14 @@ public class GameRules {
      * Se necessário, pode se criar outra classe só para lidar com os inputs
      */
 
-    static final int CELLS = 81;
-    static final int HARD = CELLS-10;
-    static final int MEDIUM = CELLS-20;
-    static final int EASY = CELLS-25;
+    static final int FIELDS = 81;
+    static final int HARD = FIELDS-17;
+    static final int MEDIUM = FIELDS-25;
+    static final int EASY = FIELDS-30;
     private int difficulty;
+    private MatrixManager manager;
+    private View viewer;
+    private int[] grid[];
 
     public GameRules(int difficulty) {
         if (difficulty==1) {
@@ -31,7 +34,12 @@ public class GameRules {
         return this.difficulty;
     }
 
-    public void startGame() {
+    public void startGame(MatrixManager manager) {
+        this.manager = manager;
+        this.grid = this.manager.createValidGrid(difficulty);
+        this.viewer = new View(grid);
+        viewer.printGrid(grid);
         
+
     }
 }
