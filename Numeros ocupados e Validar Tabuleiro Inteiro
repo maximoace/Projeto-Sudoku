@@ -1,0 +1,17 @@
+private static boolean[][] numerosOcupados (boolean[][] slots, int[][] matriz) {
+	        for (int i = 0; i < matriz.length; i++) {
+	            for (int j = 0; j < matriz[0].length; j++) {
+	                if (matriz[i][j] != 0)
+	                    slots[i][j] = true;
+	            }
+	        }
+	        return slots;
+	    }
+	    
+	    public static boolean validaTabuleiroInteiro (int[][] matriz) {
+	        for (int i = 0; i < matriz.length; i++) {
+	            for (int j = 0; j < matriz[0].length; j++) {
+	                if(matriz[i][j] == 0)
+	                    return false
+	            }
+	        }
