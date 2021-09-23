@@ -179,17 +179,21 @@ public class MatrixManager {
     }
 
     public boolean isValid() {
-        boolean result = true;
         for (int row=0; row<this.grid.length; row++) {
-            result = hasDuplicate(getRow(grid, row));
+            if (hasDuplicate(getRow(grid, row)))
+                return false;
         }
         for (int column=0; column<this.grid[0].length; column++) {
-            result = hasDuplicate(getColumn(grid, column));
+            if (hasDuplicate(getColumn(grid, column)))
+                return false;
         }
-        for (int index=0; index<this.grid.length + this.sqrt; index+=index+this.sqrt) {
-            result = hasDuplicate(getQuadrant(grid, index, index));
+        for (int row=0; row<this.grid.length; row=row+sqrt) {
+            for (int column=0; column<this.grid[row].length; column=column+sqrt) {
+                if (hasDuplicate(getQuadrant(this.grid, row, column)))
+                    return false;
+            }
         }
-        return result;
+        return true;
     }
 
     public boolean hasDuplicate(List<Integer> list) {

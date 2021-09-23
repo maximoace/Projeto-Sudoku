@@ -6,10 +6,10 @@ import java.util.List;
 import utils.ConsoleColors;
 
 public class View {
-    private int[] initial_game[];
+    private int[] initial_grid[];
 
-    public View(int[] game[]) {
-        this.initial_game = game;
+    public View(int[] initial_grid[]) {
+        this.initial_grid = initial_grid;
     }
 
     public void printGrid(int[] grid[]) {
@@ -54,7 +54,7 @@ public class View {
     public String formatCell(int[] grid[], int row, int column) {
         if (grid[row][column] == 0) {
             return " ";
-        } else if (grid[row][column] == this.initial_game[row][column]) {
+        } else if (grid[row][column] == this.initial_grid[row][column]) {
             return ConsoleColors.BLUE + Integer.toString(grid[row][column]) + ConsoleColors.RESET;
         } else {
             return Integer.toString(grid[row][column]);

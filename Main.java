@@ -23,9 +23,10 @@ public class Main {
                 difficulty = 0;
             }
         } while (difficulty == 0);
-        scn.close();
         GameRules rules = new GameRules(difficulty);
         MatrixManager manager = new MatrixManager();
         rules.startGame(manager);
+        rules.closeScanner();
+        scn.close();
     }
 }
