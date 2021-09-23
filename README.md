@@ -27,6 +27,10 @@ As entradas e saídas são manipuladas através do terminal e o jogo deve propor
 
 ---
 
-### Status
+# Como jogar
 
-<span style="color: yellow">Iniciado</span>
+    Ao iniciar o jogo, escolha a dificuldade utilizando os números das opções selecionadas,
+    o jogo irá gerar um tabuleiro de sudoku para você
+    
+    Para preencher um valor na grade, utilize: linha,coluna número. (ex: 2,5 3), os índices dá grade
+    estão atualmente começando a partir do 0, logo, vai do 0 ao 8.

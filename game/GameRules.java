@@ -56,12 +56,13 @@ public class GameRules {
         }
     }
 
+    //
     public void getEntry() {
         String input = "";
         boolean placed = false;
 
         while (!placed) {
-            System.out.println("Informa a posição e o número: linha,coluna número");
+            System.out.println("Informe a posição e o número: linha,coluna número (índice inicial: 0)");
             input = scn.nextLine();
             String[] values =  input.split(",| ");
             int row = Integer.parseInt(values[0]);
